@@ -29,7 +29,6 @@ points(pontos, col = 'red', pch = 16)
 stark.buffer <- buffer(stark, width = 2, dissolve = TRUE)
 plot(stark.buffer, col = "grey80", axes = T)
 
-
 #adicionando nova coluna id
 westeros$regiao <- c(rep(1:3, each = 4))
 westeros
@@ -40,6 +39,7 @@ plot(westeros_contorno, axes = T)
 plot(stark, add = T, col = "lightblue")
 new_westeros = aggregate(westeros, by = "regiao")
 plot(westeros, axes = T, col = terrain.colors(12))
+
 #usando só 4 cores desse pck
 plot(new_westeros, axes = T, col = terrain.colors(4))
 
@@ -50,6 +50,18 @@ writeOGR(
   layer = "westeros_contorno", #nome do arquivo
   driver = "ESRI Shapefile" #formato pretendido para exportação
 )
+
+#deu erro ao utiliar essa função, então nós concertamos fazendo uma correção:
+westeros_contorno$id<-1
+
+#e depois voltamos a exportar com a mesma função anterior:
+writeOGR(
+  westeros_contorno, #nome do objeto a ser salvo
+  dsn = "./data/meushape", #diretorio a serem salvos os resultados
+  layer = "westeros_contorno", #nome do arquivo
+  driver = "ESRI Shapefile" #formato pretendido para exportação
+)
+
 
 #criando um raster em cima do shp
 westeros_raster <- raster(westeros_contorno, res = 0.08)

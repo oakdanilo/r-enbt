@@ -20,14 +20,17 @@ plot(stark, axes = T, las = 1)
 pontos <- spsample(stark, 10, 'random')
 plot(stark, axes = T)
 points(pontos, pch = "+", col = "tomato", cex = 1.5)
-pontos.buffer <- buffer(pontos, width = 200000, dissolve = TRUE) #pontos por metros
+
+
+pontos.buffer <- buffer(pontos, width = 200000, dissolve = TRUE) #pontos por metros, posso mudar o dissolve pra FALSE
 plot(stark, axes = T)
 plot(pontos.buffer, add = T, col = "navy") #troquei de cor
 points(pontos, col = 'red', pch = 16)
 
 #buffer do mapa
-stark.buffer <- buffer(stark, width = 2, dissolve = TRUE)
+stark.buffer <- buffer(stark, width = 2, dissolve = TRUE) #acho que nesse sempre true
 plot(stark.buffer, col = "grey80", axes = T)
+plot(stark, add = T, col = "lightblue")
 
 #adicionando nova coluna id
 westeros$regiao <- c(rep(1:3, each = 4))

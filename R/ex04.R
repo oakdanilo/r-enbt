@@ -22,7 +22,7 @@ dim(BCI)
 colSums(t(BCI)) #soma das colunas o dataframe transposto - mt prático cabritinho
 
 #OU
-aplly(BCI, 1, sum) #aplicar a soma das linhas (coluna 1) do df BCI
+apply(BCI, 1, sum) #aplicar a soma das linhas (coluna 1) do df BCI
 
 ####################
 

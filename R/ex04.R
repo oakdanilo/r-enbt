@@ -3,10 +3,10 @@
 library(vegan)
 
 #exercício 2
-poa<-read.csv("./Data/exercicio_02.csv", sep =  ";")
+poa<-read.csv("./Data/exercicio_02.csv", sep =  ",")
 str(poa)
 head(poa)
-poa2<-poa[poa$var=="quebec",] #indexei pela coluna de variedade para coiaas só iguais (==) a quebec
+poa2<-poa[poa$var=="Quebec",] #indexei pela coluna de variedade para coiaas só iguais (==) a quebec
 poa3<-poa2[poa2$temp=="chilled",] #indexei só aos chilled
 
 #OU poa3<-poa[poa$temp=="chilled" & poa$var=="quebec",]
